@@ -1,0 +1,41 @@
+package GodsMod.common.com.gods.mod;
+
+import The_Slayer.BrocksTab;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.Init;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
+
+
+@Mod(modid = GodsMod.modid, name = "Gods Mod", version = "0.0.1 Alpha")
+@NetworkMod(clientSideRequired = true, serverSideRequired = false)
+public class GodsMod 
+{
+    public static final String modid = "Gods_GodsMod";
+    
+    public static CreativeTabs GodsModTab = new GodTab("The Gods Creative Tab");
+    
+    public static Block CrackedMossyStone = new CrackedMossy(253, Material.rock).setUnlocalizedName("CrackedMossyStone").setHardness(10.0F).setStepSound(Block.soundWoodFootstep);
+    
+    
+    
+    
+    @Init
+    public void load(FMLInitializationEvent event) 
+    {
+  	//Game Registry
+		GameRegistry.registerBlock(CrackedMossyStone, "CrackedMossyStone");	
+		
+       
+        
+        // Language registry
+		LanguageRegistry.addName(CrackedMossyStone, "Cracked Mossy Stone");
+		LanguageRegistry.instance().addStringLocalization("itemGroup.The Gods Creative Tab", "en_US", "The Gods Mod");
+     
+    }
+}
